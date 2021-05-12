@@ -6,11 +6,15 @@ module.exports = {
       'recipes',
       {
         id: {
-          autoIncrement: true,
+          type: Sequelize.DataTypes.INTEGER,
           primaryKey: true,
-          type: Sequelize.DataTypes.BIGINT,
+          autoIncrement: true,
         },
-        name: {
+        title: {
+          type: Sequelize.DataTypes.STRING,
+          allowNull: false,
+        },
+        duration: {
           type: Sequelize.DataTypes.STRING,
           allowNull: false,
         },
@@ -18,19 +22,29 @@ module.exports = {
           type: Sequelize.DataTypes.STRING(6000),
           allowNull: false,
         },
+        level: {
+          type: Sequelize.DataTypes.STRING,
+          allowNull: false,
+        },
         positivePoints: {
-          type: Sequelize.DataTypes.BIGINT,
+          type: Sequelize.DataTypes.INTEGER,
           allowNull: true,
         },
         negativePoints: {
-          type: Sequelize.DataTypes.BIGINT,
+          type: Sequelize.DataTypes.INTEGER,
           allowNull: true,
         },
         comments: {
           type: Sequelize.DataTypes.STRING(6000),
           allowNull: true,
         },
-
+        picture: {
+          type: Sequelize.DataTypes.STRING,
+          allowNull: false,
+        },
+        UserId: {
+          type: Sequelize.DataTypes.INTEGER,
+        },
         createdAt: Sequelize.DataTypes.DATE,
         updatedAt: Sequelize.DataTypes.DATE,
       }

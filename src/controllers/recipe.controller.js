@@ -6,19 +6,21 @@ module.exports = {
       const { body } = req
       const recipe = await Recipe.create(
         body,
-        { include: [User]}
+        { include: [User] }
       )
 
-      Recipe.setUser(body.UserId)
-
+      recipe.setUser(body.userid)
       res.status(201).json(recipe)
     } catch (error) {
       res.status(400).json({ error: error.message})
+      console.dir(error)
     }
   },
   async listRecipes(req, res){
     try {
-      const recipes = await Recipe.findAll()
+      const recipes = await Recipe
+      .scope({ include: [User] })
+      .findAll()
       res.status(200).json(recipes)
     } catch (error) {
       res.status(400).json({error: error.message})

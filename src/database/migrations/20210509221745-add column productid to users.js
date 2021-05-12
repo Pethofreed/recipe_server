@@ -6,9 +6,9 @@ module.exports = {
       return Promise.all([
         queryInterface.addColumn(
           'users',
-          'productid',
+          'productId',
           {
-            type: Sequelize.DataTypes.BIGINT,
+            type: Sequelize.DataTypes.INTEGER,
           },
           { transaction: t}
         )
@@ -21,7 +21,7 @@ module.exports = {
       return Promise.all([
         queryInterface.removeColumn(
           'users',
-          'productid',
+          'productId',
           { transaction: t }
         )
       ])

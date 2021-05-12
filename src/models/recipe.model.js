@@ -1,6 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const recipeSchema = {
-    name: {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    duration: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -8,17 +12,25 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(6000),
       allowNull: false,
     },
+    level: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     positivePoints: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     negativePoints: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     comments: {
       type: DataTypes.STRING(6000),
       allowNull: true,
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   }
 

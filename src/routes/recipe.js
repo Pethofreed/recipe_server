@@ -1,6 +1,10 @@
 const router = require("express").Router()
-const recipeController = require("../controllers/recipe.controller")
+const {
+  createRecipe,
+  listRecipes
+} = require("../controllers/recipe.controller")
 
-router.route('/create').post(recipeController.createRecipe)
+router.route('/create').post(createRecipe)
+router.route('/list').get(listRecipes)
 
 module.exports = router
