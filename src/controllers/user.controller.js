@@ -57,19 +57,19 @@ module.exports = {
   },
   async showOne(req, res){
     try {
-      const { userId } = req.body
-      const user = User.findByPk(userId)
-      res.status(200).json(user)
+      const { user: {userId} } = req
+      const user = await User.findByPk(userId)
+      res.status(200).json({user: user})
     } catch (error) {
       res.status(400).json(error)
     }
   },
   async update(req, res) {
     try {
-      const { body, params: { userdId} } = req
+      const { body, user: { userId} } = req
       let user = await User.findByPk(userId)
       user =  await user.update(body)
-      res.status(200).json(user)
+      res.status(200).json({user: user})
     } catch (error) {
       res.status(400).json(error)
     }
@@ -82,6 +82,16 @@ module.exports = {
       res.status(200).json(user)
     } catch (error) {
       res.status(400).json({error: error.message})
+    }
+  },
+  async updatePicture(req, res) {
+    try {
+      const { body, user: { userId} } = req
+      let user = await User.findByPk(userId)
+      user =  await user.update({picture: body.profilePicture})
+      res.status(200).json(user)
+    } catch (error) {
+      res.status(400).json(error)
     }
   }
 }

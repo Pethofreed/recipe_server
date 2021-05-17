@@ -3,17 +3,34 @@ const { Recipe, User } = require("../models")
 module.exports = {
   async createRecipe(req, res){
     try {
-      const { body } = req
+      const { body, user: { userId} } = req
       const recipe = await Recipe.create(
-        body,
+        {
+          userid: userId,
+          title: body.title,
+          level: body.level,
+          picture: body.picture,
+          duration: body.duration,
+          description: body.description,
+          ingredients: body.ingredients
+        },
         { include: [User] }
       )
-
-      recipe.setUser(body.userid)
+      recipe.setUser(userId)
       res.status(201).json(recipe)
     } catch (error) {
       res.status(400).json({ error: error.message})
       console.dir(error)
+    }
+  },
+  async getRecipes(req, res){
+    try {
+      const { user: {userId} } = req
+      const recipes = await Recipe
+      .findAll( { where: { UserId: userId } } )
+      res.status(200).json({recipes: recipes})
+    } catch (error) {
+      res.status(400).json({error: error.message})
     }
   },
   async listRecipes(req, res){
@@ -36,12 +53,12 @@ module.exports = {
       res.status(400).json(error)
     }
   },
-  async delete(req, res) {
+  async deleteRecipe(req, res) {
     try {
-      const { id } = req.params
+      const { id } = req.body
       const recipe = await Recipe.findByPk(id)
       await recipe.destroy()
-      res.status(200).json(recipe)
+      res.status(200).json({recipe: recipe})
     } catch (error) {
       res.status(400).json({error: error.message})
     }

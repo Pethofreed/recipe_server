@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    picture: {
+      type: DataTypes.STRING,
+    },
   }
 
   const userOps = {

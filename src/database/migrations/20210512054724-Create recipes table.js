@@ -26,6 +26,10 @@ module.exports = {
           type: Sequelize.DataTypes.STRING,
           allowNull: false,
         },
+        ingredients: {
+          type: Sequelize.DataTypes.STRING(3000),
+          allowNull: false,
+        },
         positivePoints: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: true,
