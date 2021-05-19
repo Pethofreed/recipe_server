@@ -8,9 +8,9 @@ const {
   deleteRecipe
 } = require("../controllers/recipe.controller")
 
-router.route('/list').get(listRecipes)
-router.route('/create').post(auth, formData, createRecipe)
-router.route('/getRecipes').get(auth, getRecipes)
+router.route('/getAllRecipes').get(listRecipes)
 router.route('/delete').put(auth, deleteRecipe)
+router.route('/getRecipes').get(auth, getRecipes)
+router.route('/create').post(auth, formData, createRecipe)
 
 module.exports = router
