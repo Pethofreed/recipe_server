@@ -11,7 +11,7 @@ const {
 
 router.route('/getAllRecipes').get(listRecipes)
 router.route('/delete').put(auth, deleteRecipe)
-router.route('/getRecipe/:idRecipe').get(auth, getRecipe)
+router.route('/getRecipe/:idRecipe').get(getRecipe)
 router.route('/getRecipes').get(auth, getRecipes)
 router.route('/create').post(auth, formData, createRecipe)
 
