@@ -33,6 +33,17 @@ module.exports = {
       res.status(400).json({error: error.message})
     }
   },
+  async getRecipe(req, res){
+    try {
+      const { params: { idRecipe } } = req
+      console.log(idRecipe)
+      const recipe = await Recipe
+      .findByPk(idRecipe)
+      res.status(200).json(recipe)
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+  },
   async listRecipes(req, res){
     try {
       const recipes = await Recipe
