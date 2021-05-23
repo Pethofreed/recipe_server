@@ -5,6 +5,7 @@ const express = require("express")
 const { sequelize } = require("./models")
 const userRouter = require("./routes/user")
 const recipeRouter = require("./routes/recipe")
+const favoriteRouter = require("./routes/favorite")
 
 const port = process.env.PORT || 8000
 const app = express()
@@ -16,6 +17,7 @@ app.use(morgan('dev'))
 
 app.use('/users', userRouter)
 app.use('/recipes', recipeRouter)
+app.use('/favorites', favoriteRouter)
 
 app.listen(port, () => {
   console.log(`App running at http://localhost:${port}`)

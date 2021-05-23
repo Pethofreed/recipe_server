@@ -36,8 +36,8 @@ module.exports = {
   async getRecipe(req, res){
     try {
       const { params: { idRecipe } } = req
-      console.log(idRecipe)
       const recipe = await Recipe
+      .scope({ include: [User] })
       .findByPk(idRecipe)
       res.status(200).json(recipe)
     } catch (error) {
@@ -50,6 +50,16 @@ module.exports = {
       .scope({ include: [User] })
       .findAll()
       res.status(200).json(recipes)
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+  },
+  async addPoint(req, res) {
+    try {
+      const { body, params: { userId} } = req
+      let recipe = await Recipe.findByPk(body.id)
+      recipe =  await recipe.update( {positivePoints: recipe.positivePoints + 5} )
+      res.status(200).json({message: 'sucess'})
     } catch (error) {
       res.status(400).json({error: error.message})
     }

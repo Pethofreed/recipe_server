@@ -144,7 +144,6 @@ module.exports = {
           </div>
         `
       })
-
       res.status(201).json({token, user})
     } catch (error) {
       res.status(400).json({message: error.message})

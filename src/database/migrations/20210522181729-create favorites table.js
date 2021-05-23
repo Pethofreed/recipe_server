@@ -5,8 +5,9 @@ module.exports = {
     await queryInterface.createTable(
       'favorites',
       {
-        userid: {
+        id: {
           type: Sequelize.DataTypes.INTEGER,
+          primaryKey: true,
           allowNull: false,
         },
         recipeid: {
