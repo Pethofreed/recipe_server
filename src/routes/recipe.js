@@ -3,6 +3,7 @@ const { auth } = require("../utils/auth")
 const { formData } = require("../utils/formData")
 const {
   addPoint,
+  getSearch,
   getRecipe,
   getRecipes,
   listRecipes,
@@ -14,6 +15,7 @@ router.route('/addPoint').post(auth, addPoint)
 router.route('/getAllRecipes').get(listRecipes)
 router.route('/delete').put(auth, deleteRecipe)
 router.route('/getRecipes').get(auth, getRecipes)
+router.route('/getSearch/:search').get(getSearch)
 router.route('/getRecipe/:idRecipe').get(getRecipe)
 router.route('/create').post(auth, formData, createRecipe)
 

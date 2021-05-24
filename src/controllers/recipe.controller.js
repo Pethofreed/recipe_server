@@ -1,4 +1,5 @@
 const { Recipe, User } = require("../models")
+const Sequelize = require('sequelize')
 
 module.exports = {
   async createRecipe(req, res){
@@ -39,6 +40,34 @@ module.exports = {
       const recipe = await Recipe
       .scope({ include: [User] })
       .findByPk(idRecipe)
+      res.status(200).json(recipe)
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+  },
+  async getSearch(req, res){
+    try {
+      const { params: { search } } = req
+      const search1 = search.toLowerCase()
+      const Op = Sequelize.Op
+      const recipe = await Recipe
+      .scope({ include: [User] })
+      .findAll( { where:
+        {
+          [Op.or]: [
+            {
+              title: {
+                [Op.like]: `%${search}%`
+              }
+            },
+            {
+              title: {
+                [Op.like]: `%${search1}%`
+              }
+            }
+          ]
+        },
+      } )
       res.status(200).json(recipe)
     } catch (error) {
       res.status(400).json({error: error.message})
