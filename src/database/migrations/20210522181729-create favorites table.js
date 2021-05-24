@@ -8,6 +8,10 @@ module.exports = {
         id: {
           type: Sequelize.DataTypes.INTEGER,
           primaryKey: true,
+          autoIncrement: true,
+        },
+        userid: {
+          type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
         },
         recipeid: {

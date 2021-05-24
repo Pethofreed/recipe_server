@@ -1,8 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const favoriteSchema = {
-    id: {
+    userid: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
       allowNull: false,
     },
     recipeid: {
