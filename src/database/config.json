@@ -22,5 +22,6 @@
         "require": true,
         "rejectUnauthorized": false
       }
+    }
   }
 }
