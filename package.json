@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Carlos Valencia Henao <rasfreed@gmail.com> (https://www.linkedin.com/in/carlosvalenciahenao)",
+  "engines": {
+    "node": "15.11.0",
+    "yarn": "1.22.10",
+    "npm": "7.6.0"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node src/server.js",
