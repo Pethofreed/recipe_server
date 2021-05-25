@@ -5,6 +5,7 @@
   "author": "Carlos Valencia Henao <rasfreed@gmail.com> (https://www.linkedin.com/in/carlosvalenciahenao)",
   "license": "MIT",
   "scripts": {
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "sql": "sequelize"
   },
