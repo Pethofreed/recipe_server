@@ -95,10 +95,33 @@ module.exports = {
   },
   async update(req, res) {
     try {
-      const { body, params: { userdId} } = req
-      let user = await User.findByPk(userId)
-      user =  await user.update(body)
-      res.status(200).json(user)
+      const { body } = req
+      let recipe = await Recipe.findByPk(body.id)
+      recipe =  await recipe.update( {
+        title: body.title,
+        level: body.level,
+        duration: body.duration,
+        description: body.description,
+        ingredients: body.ingredients
+      })
+      res.status(200).json(recipe)
+    } catch (error) {
+      res.status(400).json(error)
+    }
+  },
+  async updateRecipe(req, res) {
+    try {
+      const { body } = req
+      let recipe = await Recipe.findByPk(body.id)
+      recipe =  await recipe.update( {
+        title: body.title,
+        level: body.level,
+        picture: body.picture,
+        duration: body.duration,
+        description: body.description,
+        ingredients: body.ingredients
+      })
+      res.status(200).json(recipe)
     } catch (error) {
       res.status(400).json(error)
     }
