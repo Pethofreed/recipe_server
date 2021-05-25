@@ -132,7 +132,7 @@ module.exports = {
                   ¡Gracias por elegirnos!
                 </p>
                 <div style="${style.btn}">
-                  <a href="http://localhost:3000/signin" target="_blank"
+                  <a href="https://myrecipe-ruby.vercel.app/" target="_blank"
                     style="${style.btn_web}"
                   >
                     Página web
